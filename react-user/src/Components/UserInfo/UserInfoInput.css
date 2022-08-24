@@ -1,0 +1,24 @@
+.form-control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-control label {
+    font-weight: bold;
+    font-family: inherit;
+}
+
+.form-control input {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    border: 1px solid #c4bbbb;
+}
+
+.user-button {
+    background-color: #470647;
+    color: #fff;
+    padding: 0.2rem 0.7rem;
+    margin: 0.2rem;
+    font-family: inherit;
+}
