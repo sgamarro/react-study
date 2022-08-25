@@ -6,10 +6,9 @@ import UserInfoInput from "./Components/UserInfo/UserInfoInput";
 function App() {
   const [userDataList, setUserDatList] = useState([]);
 
-  const addUserInfo = (e) => {
-    console.log(userDataList);
-    setUserDatList((data) => {
-      return [...data, e];
+  const addUserInfo = (user, age) => {
+    setUserDatList((prevdata) => {
+      return [...prevdata, { id: Math.random(), user: user, age: age }];
     });
   };
 

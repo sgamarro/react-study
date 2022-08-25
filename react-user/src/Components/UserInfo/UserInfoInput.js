@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
+import ErrorModel from "../UI/ErrorModel";
 import "./UserInfoInput.css";
 
 function UserInfoInput(props) {
   const [usernameInfo, setUsernameInfo] = useState("");
   const [userAge, setUserAge] = useState("");
+  const [error, setError] = useState();
 
   const addUsername = (e) => {
     setUsernameInfo(e.target.value);
@@ -14,34 +16,56 @@ function UserInfoInput(props) {
     setUserAge(e.target.value);
   };
 
+  const closeError = () => {
+    setError(null);
+  };
+
   const addUserInfoHandeler = (e) => {
     e.preventDefault();
-    const userData = [
-      {
-        id: Math.random(),
-        user: usernameInfo,
-        age: +userAge,
-      },
-    ];
-    props.addUser(userData);
+    if (usernameInfo.trim().length === 0 || userAge.trim().length === 0) {
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid name and age (non-empty values)",
+      });
+      return;
+    }
+
+    if (+userAge < 1) {
+      setError({
+        title: "Invalid Error",
+        message: "Please enter a valid age (> 0)",
+      });
+      return;
+    }
+
+    props.addUser(usernameInfo, +userAge);
     setUserAge("");
     setUsernameInfo("");
   };
 
   return (
-    <Card>
-      <form onSubmit={addUserInfoHandeler}>
-        <div className="form-control">
-          <label htmlFor="username">Username</label>
-          <input type="text" value={usernameInfo} onChange={addUsername} />
-          <label>Age (Years) </label>
-          <input type="number" value={userAge} min="0" onChange={addUserAge} />
-        </div>
-        <button type="submit" className="user-button">
-          Add User
-        </button>
-      </form>
-    </Card>
+    <div>
+      {error && (
+        <ErrorModel
+          title={error.title}
+          message={error.message}
+          close={closeError}
+        />
+      )}
+      <Card>
+        <form onSubmit={addUserInfoHandeler}>
+          <div className="form-control">
+            <label htmlFor="username">Username</label>
+            <input type="text" value={usernameInfo} onChange={addUsername} />
+            <label>Age (Years) </label>
+            <input type="number" value={userAge} onChange={addUserAge} />
+          </div>
+          <button type="submit" className="user-button">
+            Add User
+          </button>
+        </form>
+      </Card>
+    </div>
   );
 }
 
