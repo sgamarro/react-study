@@ -1,0 +1,29 @@
+.summary {
+    width: 50%;
+    margin: auto;
+    margin-top: -10rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #8b4727;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 18px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+    text-align: center;
+    line-height: 1.2rem;
+}
+
+.avalible {
+    max-width: 60rem;
+    width: 90%;
+    margin: 2rem auto;
+}
+
+.avalible ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
