@@ -1,0 +1,33 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.2rem;
+    border-bottom: 1px dotted #c1c1c1;
+    line-height: 0.5rem;
+}
+
+.cart-item h2 {
+    font-size: 1.25rem;
+}
+
+.summary {
+    color: #949494;
+    font-style: italic;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.actions button {
+    margin: 0.5rem;
+    background-color: #e28409;
+    color: #fff;
+    font-size: 1.25rem;
+    border: 1px solid #e28409;
+    border-radius: 12px;
+    width: 1.7rem;
+    height: 1.7rem;
+    cursor: pointer;
+}
