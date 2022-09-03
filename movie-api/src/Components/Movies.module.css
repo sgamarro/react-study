@@ -1,0 +1,26 @@
+.movie-list {
+    list-style: none;
+    padding: 1rem 2.5rem;
+}
+
+.list {
+    background-color: #0d0d3b;
+    text-align: center;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.55);
+}
+
+.list h2 {
+    font-size: 1.7rem;
+    color: #f0d802;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.55);
+}
+
+.list h3 {
+    font: initial;
+    font-size: 1.2rem;
+    font-family: inherit;
+}

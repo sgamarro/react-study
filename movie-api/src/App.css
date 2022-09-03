@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: #141313;
+}
+
+section {
+  margin: 2rem;
+  display: flex;
+  align-content: center;
+}
+
+button {
+  padding: 1rem 6rem;
+  margin: 0.5rem auto;
+  background-color: #f0d802;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
+    0px 1px 20px rgba(196, 218, 3, 0.75);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffe600;
+  box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
+    0px 1px 23px rgba(214, 238, 2, 0.87);
+}
+
+button:focus {
+  background-color: #ffe600;
+  box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
+    0px 1px 23px rgba(214, 238, 2, 0.87);
+  outline: none;
+}
+
+.movie-container {
+  background-color: #eee;
+  padding: 0;
+  border-radius: 12px;
+}
