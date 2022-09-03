@@ -16,7 +16,7 @@ section {
   align-content: center;
 }
 
-button {
+.btn {
   padding: 1rem 6rem;
   margin: 0.5rem auto;
   background-color: #f0d802;
@@ -29,20 +29,21 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   background-color: #ffe600;
   box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
     0px 1px 23px rgba(214, 238, 2, 0.87);
 }
 
-button:focus {
+.btn:focus {
   background-color: #ffe600;
   box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
     0px 1px 23px rgba(214, 238, 2, 0.87);
   outline: none;
 }
 
-.movie-container {
+.movie-container,
+.form-container {
   background-color: #eee;
   padding: 0;
   border-radius: 12px;
