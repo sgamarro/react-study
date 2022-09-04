@@ -12,9 +12,10 @@ body {
 
 section {
   margin: 2rem auto;
-  max-width: 60%;
-  display: flex;
-  align-content: center;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  padding: 2rem;
 }
 
 .btn {

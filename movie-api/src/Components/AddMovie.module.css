@@ -41,6 +41,7 @@
 
 .btn {
     padding: 0.7rem 1.5rem;
+    margin: 0.5rem;
     background-color: #0d0d3b;
     color: #fff;
     border: 2px solid rgb(255, 255, 255);
