@@ -11,18 +11,19 @@ body {
 }
 
 section {
-  margin: 2rem;
+  margin: 2rem auto;
+  max-width: 60%;
   display: flex;
   align-content: center;
 }
 
 .btn {
-  padding: 1rem 6rem;
+  padding: 1rem 3rem;
   margin: 0.5rem auto;
   background-color: #f0d802;
   border: 2px solid rgb(255, 255, 255);
   border-radius: 50px;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   box-shadow: 0 6px 10px inset rgba(0, 0, 0, 0.75),
     0px 1px 20px rgba(196, 218, 3, 0.75);
@@ -44,7 +45,7 @@ section {
 
 .movie-container,
 .form-container {
-  background-color: #eee;
+  background-color: #fff;
   padding: 0;
   border-radius: 12px;
 }
