@@ -1,0 +1,11 @@
+.card {
+    margin: 2.5rem auto;
+    padding: 1.2rem;
+    width: 40%;
+    min-width: 20rem;
+    background-color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 20px;
+}
