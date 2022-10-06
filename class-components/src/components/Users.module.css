@@ -1,0 +1,19 @@
+.users {
+    width: 20rem;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.btn {
+    margin: 1rem;
+    background-color: #660202;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 20px;
+    border: 1px solid #660202;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
+}

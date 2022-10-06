@@ -15,3 +15,12 @@
     line-height: 1.5rem;
     padding: 0.25rem;
 }
+
+.form-control.invalid input {
+    background-color: #d39797;
+    border-color: red;
+}
+
+.form-control.invalid label {
+    color: red;
+}
