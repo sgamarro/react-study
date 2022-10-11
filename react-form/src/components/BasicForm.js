@@ -4,6 +4,9 @@ const BasicForm = (props) => {
   const [nameInput, setNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
+  const [nameOnFocus, setNameOnFocus] = useState(false);
+  const [lastNameOnFocus, setLastNameOnFocus] = useState(false);
+  const [emailOnFocus, setEmailOnFocus] = useState(false);
 
   const nameIsValid = nameInput !== "";
   const lastNameIsValid = lastNameInput !== "";
@@ -12,12 +15,25 @@ const BasicForm = (props) => {
   const nameInputChange = (e) => {
     setNameInput(e.target.value);
   };
+
+  const nameBlur = () => {
+    setNameOnFocus(true);
+  };
+
   const lastNameInputChange = (e) => {
     setLastNameInput(e.target.value);
   };
 
+  const lastNameBlur = () => {
+    setLastNameOnFocus(true);
+  };
+
   const emailInputChange = (e) => {
     setEmailInput(e.target.value);
+  };
+
+  const emailBlur = () => {
+    setEmailOnFocus(true);
   };
 
   const submitFormHandeler = (e) => {
@@ -40,7 +56,20 @@ const BasicForm = (props) => {
     setNameInput("");
     setLastNameInput("");
     setEmailInput("");
+    setEmailOnFocus(false);
+    setNameOnFocus(false);
+    setLastNameOnFocus(false);
   };
+
+  const nameNotValid = !nameIsValid && nameOnFocus;
+  const lastNameNotValid = !lastNameIsValid && lastNameOnFocus;
+  const emailNotValid = !emailIsValid && emailOnFocus;
+
+  let allowSubmit = true;
+
+  if (!nameIsValid && !lastNameNotValid && !emailNotValid) {
+    allowSubmit = true;
+  }
 
   return (
     <form onSubmit={submitFormHandeler}>
@@ -51,8 +80,10 @@ const BasicForm = (props) => {
             type={"text"}
             id="name"
             onChange={nameInputChange}
+            onBlur={nameBlur}
             value={nameInput}
           />
+          {nameNotValid && <p>Enter a name</p>}
         </div>
         <div className="form-control">
           <label>Last Name</label>
@@ -60,8 +91,10 @@ const BasicForm = (props) => {
             type={"text"}
             id="lastname"
             onChange={lastNameInputChange}
+            onBlur={lastNameBlur}
             value={lastNameInput}
           />
+          {lastNameNotValid && <p>Enter a last name</p>}
         </div>
       </div>
       <div className="form-control">
@@ -70,8 +103,10 @@ const BasicForm = (props) => {
           type={"email"}
           id="email"
           onChange={emailInputChange}
+          onBlur={emailBlur}
           value={emailInput}
         />
+        {emailNotValid && <p>Enter an Email</p>}
       </div>
       <div className="form-control">
         <button>Submit</button>
