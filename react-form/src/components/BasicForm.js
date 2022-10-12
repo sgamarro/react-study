@@ -1,51 +1,35 @@
-import React, { useState } from "react";
+import UseBasic from "../hooks/use-basic";
 
 const BasicForm = (props) => {
-  const [nameInput, setNameInput] = useState("");
-  const [lastNameInput, setLastNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [nameOnFocus, setNameOnFocus] = useState(false);
-  const [lastNameOnFocus, setLastNameOnFocus] = useState(false);
-  const [emailOnFocus, setEmailOnFocus] = useState(false);
+  const {
+    input: nameInput,
+    InputError: nameError,
+    inputChange: nameInputChange,
+    inputBlur: nameBlur,
+    inputIsvalid: nameIsValid,
+    reset: nameReset,
+  } = UseBasic((value) => value !== "");
 
-  const nameIsValid = nameInput !== "";
-  const lastNameIsValid = lastNameInput !== "";
-  const emailIsValid = emailInput.includes("@");
+  const {
+    input: lastNameInput,
+    InputError: lastNameError,
+    inputChange: lastNameInputChange,
+    inputBlur: lastNameBlur,
+    inputIsvalid: lastNameIsValid,
+    reset: lastNameReset,
+  } = UseBasic((value) => value !== "");
 
-  const nameInputChange = (e) => {
-    setNameInput(e.target.value);
-  };
-
-  const nameBlur = () => {
-    setNameOnFocus(true);
-  };
-
-  const lastNameInputChange = (e) => {
-    setLastNameInput(e.target.value);
-  };
-
-  const lastNameBlur = () => {
-    setLastNameOnFocus(true);
-  };
-
-  const emailInputChange = (e) => {
-    setEmailInput(e.target.value);
-  };
-
-  const emailBlur = () => {
-    setEmailOnFocus(true);
-  };
+  const {
+    input: emailInput,
+    InputError: emailError,
+    inputChange: emailInputChange,
+    inputBlur: emailBlur,
+    inputIsvalid: emailIsValid,
+    reset: emailReset,
+  } = UseBasic((value) => value.includes("@"));
 
   const submitFormHandeler = (e) => {
     e.preventDefault();
-
-    if (!nameIsValid) {
-      return;
-    } else if (!lastNameIsValid) {
-      return;
-    } else if (!emailIsValid) {
-      return;
-    }
 
     console.log({
       name: nameInput,
@@ -53,28 +37,29 @@ const BasicForm = (props) => {
       emailInput: emailInput,
     });
 
-    setNameInput("");
-    setLastNameInput("");
-    setEmailInput("");
-    setEmailOnFocus(false);
-    setNameOnFocus(false);
-    setLastNameOnFocus(false);
+    nameReset();
+    lastNameReset();
+    emailReset();
   };
 
-  const nameNotValid = !nameIsValid && nameOnFocus;
-  const lastNameNotValid = !lastNameIsValid && lastNameOnFocus;
-  const emailNotValid = !emailIsValid && emailOnFocus;
+  let allowSubmit = false;
 
-  let allowSubmit = true;
-
-  if (!nameIsValid && !lastNameNotValid && !emailNotValid) {
+  if (!nameIsValid || !lastNameIsValid || !emailIsValid) {
     allowSubmit = true;
   }
+
+  const validateNameClass = nameError ? "form-control invalid" : "form-control";
+  const validateLastnameClass = lastNameError
+    ? "form-control invalid"
+    : "form-control";
+  const validateEmailClass = emailError
+    ? "form-control invalid"
+    : "form-control";
 
   return (
     <form onSubmit={submitFormHandeler}>
       <div className="control-group">
-        <div className="form-control">
+        <div className={validateNameClass}>
           <label>First Name</label>
           <input
             type={"text"}
@@ -83,9 +68,9 @@ const BasicForm = (props) => {
             onBlur={nameBlur}
             value={nameInput}
           />
-          {nameNotValid && <p>Enter a name</p>}
+          {nameError && <p className="error-text">Enter a name</p>}
         </div>
-        <div className="form-control">
+        <div className={validateLastnameClass}>
           <label>Last Name</label>
           <input
             type={"text"}
@@ -94,10 +79,10 @@ const BasicForm = (props) => {
             onBlur={lastNameBlur}
             value={lastNameInput}
           />
-          {lastNameNotValid && <p>Enter a last name</p>}
+          {lastNameError && <p className="error-text">Enter a last name</p>}
         </div>
       </div>
-      <div className="form-control">
+      <div className={validateEmailClass}>
         <label>Email Adress</label>
         <input
           type={"email"}
@@ -106,10 +91,10 @@ const BasicForm = (props) => {
           onBlur={emailBlur}
           value={emailInput}
         />
-        {emailNotValid && <p>Enter an Email</p>}
+        {emailError && <p className="error-text">Enter a valid email</p>}
       </div>
-      <div className="form-control">
-        <button>Submit</button>
+      <div className="form-actions">
+        <button disabled={allowSubmit}>Submit</button>
       </div>
     </form>
   );
