@@ -16,6 +16,10 @@
     line-height: 1.2rem;
 }
 
+.mealsLoading {
+    text-align: center;
+}
+
 .avalible {
     max-width: 60rem;
     width: 90%;
