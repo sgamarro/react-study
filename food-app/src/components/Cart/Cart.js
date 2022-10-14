@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Cart.module.css";
 import CartContext from "../../context/context";
@@ -7,6 +7,8 @@ import Checkout from "./Checkout";
 
 function Cart(props) {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmiting, setIsSubmiting] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -22,6 +24,24 @@ function Cart(props) {
 
   const orderHandeler = () => {
     setIsCheckout(true);
+  };
+
+  const submitOrder = async (userData) => {
+    setIsSubmiting(true);
+    await fetch(
+      "https://hook-api-a7702-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          orderedItems: cartCtx.items,
+        }),
+      }
+    );
+
+    setIsSubmiting(false);
+    setDidSubmit(true);
+    cartCtx.clearCart();
   };
 
   const cartItems = (
@@ -54,15 +74,29 @@ function Cart(props) {
     </div>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const cartModalContent = (
+    <React.Fragment>
       <div className={classes.list}>{cartItems}</div>
       <div className={classes.total}>
         <span>Total Amount:</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onClose} />}
+      {isCheckout && (
+        <Checkout onCancel={props.onClose} onConfirm={submitOrder} />
+      )}
       {!isCheckout && modalActions}
+    </React.Fragment>
+  );
+
+  const isSubmitingContent = <p>Sending order data...</p>;
+
+  const didSubmitModalContent = <p>Order placed! </p>;
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmiting && !didSubmit && cartModalContent}
+      {isSubmiting && isSubmitingContent}
+      {didSubmit && didSubmitModalContent}
     </Modal>
   );
 }
