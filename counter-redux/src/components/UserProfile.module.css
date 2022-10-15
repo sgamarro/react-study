@@ -1,0 +1,10 @@
+.profile {
+    margin: 5rem auto;
+    box-shadow: 15px 15px 10px #191919,
+        -15px -15px 10px #313131;
+    width: 40rem;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    background-color: #fff;
+}
