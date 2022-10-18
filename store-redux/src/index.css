@@ -21,8 +21,6 @@ button {
   background-color: transparent;
   color: #1a8ed1;
   border: 1px solid #1a8ed1;
-  box-shadow: -10px 15px 26px #393939,
-    10px -15px 26px #454545;
 }
 
 button:hover,

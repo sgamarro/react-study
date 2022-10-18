@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "../UI/Card";
 import CartItem from "./CartItem";
+import classes from "./Cart.module.css";
 
 const Cart = () => {
   return (
-    <Card>
+    <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       <ul>
         <CartItem
