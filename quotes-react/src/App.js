@@ -1,11 +1,5 @@
-import QuoteForm from "./components/quotes/QuoteForm";
-
 function App() {
-  return (
-    <div>
-      <QuoteForm />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
