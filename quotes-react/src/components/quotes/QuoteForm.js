@@ -11,6 +11,7 @@ const QuoteForm = (props) => {
     e.preventDefault();
     const enteredAuthor = authorRef.current.value;
     const enteredText = textInputRef.current.value;
+    props.onAddQuotes({ author: enteredAuthor, text: enteredText });
   };
 
   return (
